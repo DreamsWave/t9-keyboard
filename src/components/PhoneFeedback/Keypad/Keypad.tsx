@@ -1,12 +1,19 @@
 import { useCallback } from "react";
 import styled from "styled-components";
+import PhoneCallSVG from "../../../assets/icons/phone-call.svg";
+import PhoneCallOffSVG from "../../../assets/icons/phone-off.svg";
+import SelectSVG from "../../../assets/icons/select.svg";
 import {
   KEYPAD_LAYOUT,
   T9Key,
   T9_KEY_LABELS,
   T9_KEY_MAP,
-} from "../../constants/t9";
-import KeypadButton from "./KeypadButton";
+} from "../../../constants/t9";
+import { px } from "../../../utils/themeUtils";
+import PxIcon from "../../common/PxIcon";
+import DPad from "./DPad";
+import Key from "./Key";
+import KeyControl from "./KeyControl";
 
 interface KeypadProps {
   onKeyPress: (key: T9Key) => void;
@@ -19,48 +26,32 @@ interface KeypadProps {
   keyLabels?: Record<T9Key, string>;
 }
 
-type KeyType = "default" | "delete" | "submit" | "nav";
-
 const KeypadContainer = styled.div`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.sm};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${px(2)};
 `;
 
 const ActionRow = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  // gap: ${({ theme }) => theme.spacing.sm};
+  grid-template-columns: 1fr ${px(30)} 1fr;
+  margin-top: ${px(2)};
+`;
+
+const ActionColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: ${px(18)};
+  gap: ${px(2)};
+  margin-left: ${px(2)};
 `;
 
 const NumericGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  // gap: ${({ theme }) => theme.spacing.sm};
+  height: 100%;
 `;
-
-const Chars = styled.span`
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  opacity: 0.7;
-`;
-
-interface KeyProps {
-  type: KeyType;
-  label: string;
-  chars?: string;
-  onClick: () => void;
-}
-
-const Key: React.FC<KeyProps> = ({ label, chars, onClick }) => (
-  <KeypadButton
-    onClick={onClick}
-    onKeyDown={(e) => e.key === "Enter" && onClick()}
-    tabIndex={0}
-    aria-label={`${label}${chars ? ` (${chars})` : ""}`}
-  >
-    {label}
-    {chars && <Chars>{chars}</Chars>}
-  </KeypadButton>
-);
 
 export default function Keypad({
   onKeyPress,
@@ -87,10 +78,28 @@ export default function Keypad({
   return (
     <KeypadContainer>
       <ActionRow>
-        <Key type="delete" label="←" onClick={handleBackspace} />
-        <Key type="nav" label="⬅️" onClick={handleMoveLeft} />
-        <Key type="nav" label="➡️" onClick={handleMoveRight} />
-        <Key type="submit" label="Send" onClick={handleSubmit} />
+        <ActionColumn>
+          <KeyControl onClick={handleBackspace} noPadding>
+            <PxIcon src={SelectSVG} pxHeight={1} pxWidth={5} />
+          </KeyControl>
+          <KeyControl onClick={handleBackspace} noPadding>
+            <PxIcon src={PhoneCallSVG} pxHeight={7} pxWidth={12} />
+          </KeyControl>
+        </ActionColumn>
+        <DPad
+          handleMoveUp={handleMoveLeft}
+          handleMoveRight={handleMoveRight}
+          handleMoveDown={handleMoveRight}
+          handleMoveLeft={handleMoveLeft}
+        />
+        <ActionColumn>
+          <KeyControl onClick={handleSubmit} noPadding>
+            <PxIcon src={SelectSVG} pxHeight={1} pxWidth={5} />
+          </KeyControl>
+          <KeyControl onClick={handleSubmit} noPadding>
+            <PxIcon src={PhoneCallOffSVG} pxHeight={7} pxWidth={12} />
+          </KeyControl>
+        </ActionColumn>
       </ActionRow>
       <NumericGrid>
         {layout.map((key) => (

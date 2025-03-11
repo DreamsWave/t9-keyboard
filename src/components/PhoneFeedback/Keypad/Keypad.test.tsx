@@ -1,5 +1,5 @@
 import { fireEvent, screen } from "@testing-library/react";
-import { render } from "../../test-utils"; // Use custom render
+import { render } from "../../../test-utils"; // Use custom render
 import Keypad from "./Keypad";
 
 describe("Keypad", () => {

@@ -1,6 +1,6 @@
 import { render, RenderOptions } from "@testing-library/react";
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { DefaultTheme, ThemeProvider } from "styled-components";
 
 // Mock theme object matching your app's theme structure
 const mockTheme = {
@@ -46,7 +46,11 @@ const mockTheme = {
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  return <ThemeProvider theme={mockTheme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={mockTheme as unknown as DefaultTheme}>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 const customRender = (

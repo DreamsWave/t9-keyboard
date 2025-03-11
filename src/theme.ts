@@ -28,6 +28,11 @@ const theme = {
       light: "#fff",
       dark: "#000",
     },
+    background: {
+      default: "#a6aeba",
+      light: "#000",
+      dark: "#000",
+    },
   },
   spacing: {
     xs: "0.25rem",
