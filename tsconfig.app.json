@@ -25,7 +25,8 @@
     "types": [
       "@types/jest",
       "jest",
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "bun-types"
     ]
   },
   "include": [
