@@ -1,32 +1,43 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import PhoneSVG from "../../assets/textures/phone.svg";
 import { useTextInput } from "../../hooks/useTextInput";
+import { px } from "../../utils/themeUtils";
 import Keypad from "./Keypad";
 
 const PhoneContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  width: ${px(88)};
+  height: ${px(258)};
   position: relative;
 `;
 
-const PhoneBody = styled.div`
-  background-color: ${({ theme }) => theme.colors.grey.dark};
-  padding: ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.border.radius.lg};
-  width: ${({ theme }) => theme.layout.phone.width};
-  height: ${({ theme }) => theme.layout.phone.height};
-  box-shadow: ${({ theme }) => theme.elevation.shadow.lg};
+const PhoneTexture = styled.img`
+  width: ${px(88)};
+  height: ${px(258)};
   display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const PhoneDisplay = styled.div`
+  background-color: ${({ theme }) => theme.colors.grey.default};
+  overflow: hidden;
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  top: ${px(17)};
+  left: ${px(10)};
+  height: ${px(83)};
+  width: ${px(68)};
 `;
 
 const Display = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.white};
   flex: 1;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  border: ${({ theme }) => theme.border.style.inset};
   padding: ${({ theme }) => theme.spacing.md};
   overflow: hidden;
   display: flex;
@@ -43,7 +54,7 @@ const DisplayText = styled.div`
   box-sizing: border-box;
   line-height: 1.2;
   white-space: pre-wrap;
-  text-align: left;
+  text-align: start;
   overflow-wrap: break-word;
   position: relative;
   user-select: none;
@@ -91,9 +102,22 @@ const Textarea = styled.textarea`
 `;
 
 const Placeholder = styled.span`
+  text-align: start;
+  line-height: 1.2;
   color: ${({ theme }) => theme.colors.grey.default};
   font-family: "Courier New", Courier, monospace;
   font-size: ${({ theme }) => theme.typography.fontSize.xl};
+`;
+
+const PhoneKeypad = styled.div`
+  overflow: hidden;
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  top: ${px(142)};
+  left: ${px(5)};
+  height: ${px(100)};
+  width: ${px(78)};
 `;
 
 export default function PhoneFeedbackForm() {
@@ -159,7 +183,7 @@ export default function PhoneFeedbackForm() {
 
   return (
     <PhoneContainer>
-      <PhoneBody>
+      <PhoneDisplay>
         <Display
           role="textbox"
           aria-label="Feedback display"
@@ -167,6 +191,8 @@ export default function PhoneFeedbackForm() {
         >
           {renderDisplay()}
         </Display>
+      </PhoneDisplay>
+      <PhoneKeypad>
         <Keypad
           onKeyPress={handleT9Input}
           onBackspace={handleBackspace}
@@ -174,7 +200,8 @@ export default function PhoneFeedbackForm() {
           onMoveLeft={moveCursorLeft}
           onMoveRight={moveCursorRight}
         />
-      </PhoneBody>
+      </PhoneKeypad>
+      <PhoneTexture src={PhoneSVG} alt="Phone texture" />
     </PhoneContainer>
   );
 }

@@ -6,6 +6,7 @@ import {
   T9_KEY_LABELS,
   T9_KEY_MAP,
 } from "../../constants/t9";
+import KeypadButton from "./KeypadButton";
 
 interface KeypadProps {
   onKeyPress: (key: T9Key) => void;
@@ -28,42 +29,13 @@ const KeypadContainer = styled.div`
 const ActionRow = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing.sm};
+  // gap: ${({ theme }) => theme.spacing.sm};
 `;
 
 const NumericGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const KeyButton = styled.button<{ type: KeyType }>`
-  background-color: ${({ type, theme }) =>
-    type === "delete"
-      ? theme.colors.status.error.default
-      : type === "submit"
-      ? theme.colors.status.success.default
-      : theme.colors.grey};
-  color: ${({ theme }) => theme.colors.primary.white};
-  border: none;
-  padding: ${({ theme }) => theme.spacing.md};
-  font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  border-radius: ${({ theme }) => theme.border.radius.sm};
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.xs};
-  user-select: none;
-  &:hover {
-    background-color: ${({ type, theme }) =>
-      type === "delete"
-        ? theme.colors.status.error.hover
-        : type === "submit"
-        ? theme.colors.status.success.hover
-        : theme.colors.grey.hover};
-  }
+  // gap: ${({ theme }) => theme.spacing.sm};
 `;
 
 const Chars = styled.span`
@@ -78,9 +50,8 @@ interface KeyProps {
   onClick: () => void;
 }
 
-const Key: React.FC<KeyProps> = ({ type, label, chars, onClick }) => (
-  <KeyButton
-    type={type}
+const Key: React.FC<KeyProps> = ({ label, chars, onClick }) => (
+  <KeypadButton
     onClick={onClick}
     onKeyDown={(e) => e.key === "Enter" && onClick()}
     tabIndex={0}
@@ -88,7 +59,7 @@ const Key: React.FC<KeyProps> = ({ type, label, chars, onClick }) => (
   >
     {label}
     {chars && <Chars>{chars}</Chars>}
-  </KeyButton>
+  </KeypadButton>
 );
 
 export default function Keypad({

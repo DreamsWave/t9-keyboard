@@ -23,6 +23,11 @@ const theme = {
     accent: {
       cyan: "#00FFFF",
     },
+    text: {
+      default: "#5b5c69",
+      light: "#fff",
+      dark: "#000",
+    },
   },
   spacing: {
     xs: "0.25rem",
@@ -37,6 +42,15 @@ const theme = {
       lg: "1.125rem",
       xl: "1.25rem",
     },
+  },
+  fontWeights: {
+    base: 500,
+    bold: 700,
+  },
+  lineHeights: {
+    none: 0.9,
+    base: 1,
+    large: 1.5,
   },
   border: {
     radius: {
@@ -59,7 +73,7 @@ const theme = {
     },
   },
   constants: {
-    pixelSize: 4,
+    pixelSize: 3,
   },
 };
 

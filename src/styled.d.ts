@@ -26,6 +26,11 @@ declare module "styled-components" {
       accent: {
         cyan: string;
       };
+      text: {
+        default: string;
+        light: string;
+        dark: string;
+      };
     };
     spacing: {
       xs: string;
@@ -40,6 +45,15 @@ declare module "styled-components" {
         lg: string;
         xl: string;
       };
+    };
+    fontWeights: {
+      base: number;
+      bold: number;
+    };
+    lineHeights: {
+      none: number;
+      base: number;
+      large: number;
     };
     border: {
       radius: {
