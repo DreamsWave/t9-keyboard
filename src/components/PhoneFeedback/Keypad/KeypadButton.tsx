@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ButtonSVG from "../../assets/textures/button.svg";
-import { px } from "../../utils/themeUtils";
-import NinePatch from "../common/NinePatch";
+import ButtonSVG from "../../../assets/textures/button.svg";
+import { px } from "../../../utils/themeUtils";
+import NinePatch from "../../common/NinePatch";
 
 const KeypadButtonContainer = styled.button`
   display: inline-flex;
@@ -11,14 +11,15 @@ const KeypadButtonContainer = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text.default};
   outline: none;
+  font-family: "Monocraft";
 `;
 
-const KeypadButtonContent = styled.div`
+const KeypadButtonContent = styled.div<{ $noPadding: boolean }>`
   display: inline-flex;
   justify-content: start;
   align-items: center;
   gap: ${px(1)};
-  padding: ${px(1)};
+  padding: ${({ $noPadding }) => ($noPadding ? 0 : px(1))};
   height: 100%;
   width: 100%;
   cursor: pointer;
@@ -27,13 +28,20 @@ const KeypadButtonContent = styled.div`
 interface KeypadButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
+  noPadding?: boolean;
 }
 
-function KeypadButton({ children, ...props }: KeypadButtonProps) {
+function KeypadButton({
+  noPadding = false,
+  children,
+  ...props
+}: KeypadButtonProps) {
   return (
     <KeypadButtonContainer {...props}>
       <NinePatch texture={ButtonSVG} patchMargin={4}>
-        <KeypadButtonContent>{children}</KeypadButtonContent>
+        <KeypadButtonContent $noPadding={noPadding}>
+          {children}
+        </KeypadButtonContent>
       </NinePatch>
     </KeypadButtonContainer>
   );

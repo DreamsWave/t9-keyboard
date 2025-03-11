@@ -14,9 +14,9 @@ export default createGlobalStyle`
 
   body {
     font-family: "Monocraft", system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-size: ${({ theme }) => theme.typography.fontSize.base}px;
+    font-size: ${({ theme }) => theme.typography.fontSize.base};
     line-height: ${({ theme }) => theme.lineHeights.base};
     font-weight: ${({ theme }) => theme.fontWeights.base};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.text.default};
   }
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PhoneSVG from "../../assets/textures/phone.svg";
 import { useTextInput } from "../../hooks/useTextInput";
 import { px } from "../../utils/themeUtils";
-import Keypad from "./Keypad";
+import Keypad from "./Keypad/Keypad";
 
 const PhoneContainer = styled.div`
   display: flex;

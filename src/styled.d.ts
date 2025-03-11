@@ -31,6 +31,11 @@ declare module "styled-components" {
         light: string;
         dark: string;
       };
+      background: {
+        default: string;
+        light: string;
+        dark: string;
+      };
     };
     spacing: {
       xs: string;
