@@ -12,21 +12,21 @@ const PhoneContainer = styled.div`
 `;
 
 const PhoneBody = styled.div`
-  background-color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.grey.dark};
   padding: ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  width: ${({ theme }) => theme.sizes.phoneWidth};
-  height: ${({ theme }) => theme.sizes.phoneHeight};
-  box-shadow: ${({ theme }) => theme.shadow.lg};
+  border-radius: ${({ theme }) => theme.border.radius.lg};
+  width: ${({ theme }) => theme.layout.phone.width};
+  height: ${({ theme }) => theme.layout.phone.height};
+  box-shadow: ${({ theme }) => theme.elevation.shadow.lg};
   display: flex;
   flex-direction: column;
 `;
 
 const Display = styled.div`
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary.white};
   flex: 1;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  border: ${({ theme }) => theme.border.inset};
+  border: ${({ theme }) => theme.border.style.inset};
   padding: ${({ theme }) => theme.spacing.md};
   overflow: hidden;
   display: flex;
@@ -36,8 +36,8 @@ const DisplayText = styled.div`
   width: 100%;
   height: 100%;
   font-family: "Courier New", Courier, monospace;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.typography.fontSize.xl};
+  color: ${({ theme }) => theme.colors.primary.black};
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -63,7 +63,7 @@ const Cursor = styled.span`
     width: 2px;
     top: 0;
     right: -2px;
-    background-color: ${({ theme }) => theme.colors.cyan};
+    background-color: ${({ theme }) => theme.colors.accent.cyan};
     animation: blink 1.5s step-end infinite;
     @keyframes blink {
       50% {
@@ -79,8 +79,8 @@ const Textarea = styled.textarea`
   background: transparent;
   border: none;
   font-family: "Courier New", Courier, monospace;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.typography.fontSize.xl};
+  color: ${({ theme }) => theme.colors.primary.black};
   outline: none;
   resize: none;
   overflow-y: auto;
@@ -91,9 +91,9 @@ const Textarea = styled.textarea`
 `;
 
 const Placeholder = styled.span`
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.grey.default};
   font-family: "Courier New", Courier, monospace;
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.typography.fontSize.xl};
 `;
 
 export default function PhoneFeedbackForm() {

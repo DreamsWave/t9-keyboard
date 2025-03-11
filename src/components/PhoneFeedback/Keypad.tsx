@@ -40,15 +40,15 @@ const NumericGrid = styled.div`
 const KeyButton = styled.button<{ type: KeyType }>`
   background-color: ${({ type, theme }) =>
     type === "delete"
-      ? theme.colors.error
+      ? theme.colors.status.error.default
       : type === "submit"
-      ? theme.colors.success
+      ? theme.colors.status.success.default
       : theme.colors.grey};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary.white};
   border: none;
   padding: ${({ theme }) => theme.spacing.md};
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  border-radius: ${({ theme }) => theme.border.radius.sm};
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -59,15 +59,15 @@ const KeyButton = styled.button<{ type: KeyType }>`
   &:hover {
     background-color: ${({ type, theme }) =>
       type === "delete"
-        ? theme.colors.errorHover
+        ? theme.colors.status.error.hover
         : type === "submit"
-        ? theme.colors.successHover
-        : theme.colors.greyHover};
+        ? theme.colors.status.success.hover
+        : theme.colors.grey.hover};
   }
 `;
 
 const Chars = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
   opacity: 0.7;
 `;
 

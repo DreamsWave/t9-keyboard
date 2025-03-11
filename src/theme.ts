@@ -1,16 +1,28 @@
 const theme = {
   colors: {
-    black: "#000",
-    white: "#fff",
-    grey: "#666",
-    greyHover: "#888",
-    darkGrey: "#333",
-    lightGrey: "#d0d0d0",
-    error: "#a00",
-    errorHover: "#c00",
-    success: "#0a0",
-    successHover: "#0c0",
-    cyan: "#00FFFF",
+    primary: {
+      black: "#000",
+      white: "#fff",
+    },
+    grey: {
+      default: "#666",
+      hover: "#888",
+      dark: "#333",
+      light: "#d0d0d0",
+    },
+    status: {
+      error: {
+        default: "#a00",
+        hover: "#c00",
+      },
+      success: {
+        default: "#0a0",
+        hover: "#0c0",
+      },
+    },
+    accent: {
+      cyan: "#00FFFF",
+    },
   },
   spacing: {
     xs: "0.25rem",
@@ -18,25 +30,36 @@ const theme = {
     md: "0.9375rem",
     lg: "1.25rem",
   },
-  fontSize: {
-    base: "1rem",
-    sm: "0.75rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-  },
-  borderRadius: {
-    sm: "0.3125rem",
-    lg: "1.25rem",
-  },
-  shadow: {
-    lg: "0 0 1.25rem rgba(0, 0, 0, 0.5)",
+  typography: {
+    fontSize: {
+      sm: "0.75rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+    },
   },
   border: {
-    inset: "0.3125rem inset #999",
+    radius: {
+      sm: "0.3125rem",
+      lg: "1.25rem",
+    },
+    style: {
+      inset: "0.3125rem inset #999",
+    },
   },
-  sizes: {
-    phoneWidth: "18.75rem",
-    phoneHeight: "31.25rem",
+  elevation: {
+    shadow: {
+      lg: "0 0 1.25rem rgba(0, 0, 0, 0.5)",
+    },
+  },
+  layout: {
+    phone: {
+      width: "18.75rem",
+      height: "31.25rem",
+    },
+  },
+  constants: {
+    pixelSize: 4,
   },
 };
 
