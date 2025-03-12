@@ -1,1 +1,1 @@
-export type KeyType = "default" | "delete" | "submit" | "nav";
+export type KeyType = "default" | "control";

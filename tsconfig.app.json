@@ -22,12 +22,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "esModuleInterop": true,
-    "types": [
-      "@types/jest",
-      "jest",
-      "@testing-library/jest-dom",
-      "bun-types"
-    ]
   },
   "include": [
     "src/**/*",
