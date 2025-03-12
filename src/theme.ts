@@ -2,7 +2,7 @@ const theme = {
   colors: {
     primary: {
       black: "#000",
-      white: "#fff",
+      white: "#f5f7fa",
     },
     grey: {
       default: "#666",
@@ -21,7 +21,7 @@ const theme = {
       },
     },
     accent: {
-      cyan: "#00FFFF",
+      blue: "#96b2d9",
     },
     text: {
       default: "#5b5c69",

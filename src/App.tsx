@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
-import PhoneFeedbackForm from "./components/PhoneFeedback/PhoneFeedbackForm";
+import PhoneFeedbackForm from "./components/Phone/Phone";
 import GlobalStyles from "./globalStyles";
 import theme from "./theme";
 

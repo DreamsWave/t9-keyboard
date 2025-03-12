@@ -97,6 +97,7 @@ export function useTextInput() {
     handleT9Input,
     handleBackspace,
     cursorPosition,
+    setCursorPosition,
     moveCursorLeft,
     moveCursorRight,
   };

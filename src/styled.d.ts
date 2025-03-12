@@ -24,7 +24,7 @@ declare module "styled-components" {
         };
       };
       accent: {
-        cyan: string;
+        blue: string;
       };
       text: {
         default: string;
