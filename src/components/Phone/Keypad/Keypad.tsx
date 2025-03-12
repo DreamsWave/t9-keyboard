@@ -83,7 +83,7 @@ export default function Keypad({
             <PxIcon src={SelectSVG} pxHeight={1} pxWidth={5} />
           </KeyControl>
           <KeyControl onClick={handleBackspace} noPadding>
-            <PxIcon src={PhoneCallSVG} pxHeight={7} pxWidth={12} />
+            <PxIcon src={PhoneCallOffSVG} pxHeight={7} pxWidth={12} />
           </KeyControl>
         </ActionColumn>
         <DPad
@@ -97,7 +97,7 @@ export default function Keypad({
             <PxIcon src={SelectSVG} pxHeight={1} pxWidth={5} />
           </KeyControl>
           <KeyControl onClick={handleSubmit} noPadding>
-            <PxIcon src={PhoneCallOffSVG} pxHeight={7} pxWidth={12} />
+            <PxIcon src={PhoneCallSVG} pxHeight={7} pxWidth={12} />
           </KeyControl>
         </ActionColumn>
       </ActionRow>

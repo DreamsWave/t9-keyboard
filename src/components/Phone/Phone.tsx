@@ -59,6 +59,10 @@ export default function PhoneFeedbackForm() {
     [text, setText]
   );
 
+  const handleSubmitClick = useCallback(() => {
+    handleFormSubmit({ preventDefault: () => {} } as React.FormEvent);
+  }, [handleFormSubmit]);
+
   useEffect(() => {
     if (isEditing && textareaRef.current) {
       textareaRef.current.focus();
@@ -75,9 +79,9 @@ export default function PhoneFeedbackForm() {
   );
 
   const handleBlur = useCallback(() => {
-    setCursorPosition(text.length); // Assume setCursorPosition is exposed
+    setCursorPosition(text.length);
     setIsEditing(false);
-  }, [setCursorPosition, text.length]);
+  }, [setCursorPosition, text]);
 
   return (
     <PhoneContainer>
@@ -85,9 +89,13 @@ export default function PhoneFeedbackForm() {
         text={text}
         cursorPosition={cursorPosition}
         isEditing={isEditing}
+        leftActionLabel="Backspace"
+        rightActionLabel="Send"
         onTextChange={handleTextChange}
         onBlur={handleBlur}
         onClick={switchToTextarea}
+        onLeftAction={handleBackspace}
+        onRightAction={handleSubmitClick}
       />
       <PhoneKeypad>
         <Keypad

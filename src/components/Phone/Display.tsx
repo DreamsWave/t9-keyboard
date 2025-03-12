@@ -12,6 +12,7 @@ const PhoneDisplay = styled.div`
   left: ${px(10)};
   height: ${px(83)};
   width: ${px(68)};
+  flex-direction: column;
 `;
 
 const DisplayWrapper = styled.div`
@@ -57,10 +58,10 @@ const DisplayText = styled.div`
 
 const Cursor = styled.span`
   width: 0;
-  height: 1.2em;
+  height: 1em;
   position: relative;
   display: inline-block;
-  vertical-align: bottom;
+  vertical-align: middle;
 
   &:after {
     content: "";
@@ -100,32 +101,54 @@ const Textarea = styled.textarea<{ $isVisible: boolean }>`
   visibility: ${({ $isVisible }) => ($isVisible ? "visible" : "hidden")};
 `;
 
+const DisplayControlIndicators = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.accent.blue};
+`;
+
+const DisplayControlIndicator = styled.button`
+  font-family: "Monocraft", Courier, monospace;
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  padding: ${px(1)} ${px(3)};
+  color: ${({ theme }) => theme.colors.primary.white};
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 interface DisplayProps {
   text: string;
   cursorPosition: number;
   isEditing: boolean;
+  leftActionLabel?: string;
+  rightActionLabel?: string;
   onTextChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur: () => void;
   onClick: () => void;
+  onLeftAction: () => void;
+  onRightAction: () => void;
 }
 
 export default function Display({
   text,
   cursorPosition,
   isEditing,
+  leftActionLabel = "Decline",
+  rightActionLabel = "Accept",
   onTextChange,
   onBlur,
   onClick,
+  onLeftAction,
+  onRightAction,
 }: DisplayProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <PhoneDisplay>
-      <DisplayWrapper
-        role="textbox"
-        aria-label="Feedback display"
-        onClick={onClick}
-      >
+      <DisplayWrapper role="textbox" onClick={onClick}>
         <DisplayContent>
           <Textarea
             ref={textareaRef}
@@ -145,6 +168,14 @@ export default function Display({
           </DisplayTextWrapper>
         </DisplayContent>
       </DisplayWrapper>
+      <DisplayControlIndicators>
+        <DisplayControlIndicator onClick={onLeftAction}>
+          {leftActionLabel}
+        </DisplayControlIndicator>
+        <DisplayControlIndicator onClick={onRightAction}>
+          {rightActionLabel}
+        </DisplayControlIndicator>
+      </DisplayControlIndicators>
     </PhoneDisplay>
   );
 }
