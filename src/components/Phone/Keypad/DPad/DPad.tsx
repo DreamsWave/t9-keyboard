@@ -4,6 +4,7 @@ import PhoneDPadPressedLeft from "../../../../assets/textures/phone-dpad/phone-d
 import PhoneDPadPressedRight from "../../../../assets/textures/phone-dpad/phone-dpad-pressed-right.svg";
 import PhoneDPadPressedUp from "../../../../assets/textures/phone-dpad/phone-dpad-pressed-up.svg";
 import PhoneDPad from "../../../../assets/textures/phone-dpad/phone-dpad.svg";
+import { useButtonSound } from "../../../../hooks/useButtonSound";
 import {
   DPadButton,
   DPadContainer,
@@ -54,6 +55,7 @@ const DPad = React.memo(
   }: DPadProps) => {
     const [currentTexture, setCurrentTexture] =
       React.useState<string>(PhoneDPad);
+    const { playSound } = useButtonSound();
 
     const handlers = {
       handleMoveUp,
@@ -64,10 +66,14 @@ const DPad = React.memo(
 
     const handleMouseDown = (texture: string) => {
       setCurrentTexture(texture);
+      playSound(true);
     };
 
     const handleMouseUp = () => {
-      setCurrentTexture(PhoneDPad);
+      if (currentTexture !== PhoneDPad) {
+        setCurrentTexture(PhoneDPad);
+        playSound(false);
+      }
     };
 
     return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { useButtonSound } from "../../../../hooks/useButtonSound";
 import { KeyType } from "../../../../types/keypad";
 import { Chars } from "./Key.styles";
 import { KeypadButton } from "./KeypadButton";
@@ -13,24 +14,37 @@ interface KeyProps {
 
 function Key({ type, chars, onClick, noPadding = false, children }: KeyProps) {
   const [isPressed, setIsPressed] = React.useState(false);
+  const { playSound } = useButtonSound();
 
   const handleMouseDown = () => {
     setIsPressed(true);
+    playSound(true);
   };
 
   const handleMouseUp = () => {
+    if (isPressed) {
+      setIsPressed(false);
+      playSound(false);
+    }
+  };
+
+  const handleMouseLeave = () => {
     setIsPressed(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       setIsPressed(true);
+      playSound(true);
       onClick();
     }
   };
 
   const handleKeyUp = () => {
-    setIsPressed(false);
+    if (isPressed) {
+      setIsPressed(false);
+      playSound(false);
+    }
   };
 
   return (
@@ -38,7 +52,7 @@ function Key({ type, chars, onClick, noPadding = false, children }: KeyProps) {
       onClick={onClick}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       tabIndex={0}
