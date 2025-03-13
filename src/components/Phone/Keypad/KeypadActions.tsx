@@ -59,7 +59,7 @@ export default function KeypadActions({
   const handlers = { onBackspace, onSubmit: handleSubmit };
 
   return (
-    <ActionColumn>
+    <ActionColumn $side={side}>
       {ACTIONS_CONFIG[side].map(({ icon, action, label, height, width }) => (
         <Key
           key={label}

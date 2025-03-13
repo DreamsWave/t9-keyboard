@@ -2,15 +2,14 @@ import styled, { css } from "styled-components";
 import { px } from "../../../../utils/themeUtils";
 
 export const DPadContainer = styled.div`
-  height: ${px(30)};
-  width: ${px(30)};
+  height: ${px(32)};
+  width: ${px(32)};
   position: relative;
-  margin-top: ${px(1)};
 `;
 
 export const DPadTexture = styled.img`
-  height: ${px(30)};
-  width: ${px(30)};
+  height: ${px(32)};
+  width: ${px(32)};
   display: flex;
   position: absolute;
   top: 0;
