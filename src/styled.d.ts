@@ -45,10 +45,11 @@ declare module "styled-components" {
     };
     typography: {
       fontSize: {
-        sm: string;
-        base: string;
-        lg: string;
-        xl: string;
+        xs: number;
+        sm: number;
+        base: number;
+        lg: number;
+        xl: number;
       };
     };
     fontWeights: {

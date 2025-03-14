@@ -42,10 +42,11 @@ const theme = {
   },
   typography: {
     fontSize: {
-      sm: "0.75rem",
-      base: "1rem",
-      lg: "1.125rem",
-      xl: "1.25rem",
+      xs: 4,
+      sm: 5,
+      base: 6,
+      lg: 7,
+      xl: 8,
     },
   },
   fontWeights: {
@@ -78,7 +79,7 @@ const theme = {
     },
   },
   constants: {
-    pixelSize: 3,
+    pixelSize: 4,
   },
 };
 

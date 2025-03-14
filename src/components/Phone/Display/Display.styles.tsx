@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import { px } from "../../../utils/themeUtils";
+import { getFontSize, px } from "../../../utils/themeUtils";
 
 const textStyles = css`
   font-family: "Monocraft", Courier, monospace;
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
+  font-size: ${getFontSize("base")};
   color: ${({ theme }) => theme.colors.text.default};
   line-height: 1.2;
   box-sizing: border-box;
@@ -100,7 +100,7 @@ export const DisplayControlIndicators = styled.div`
 
 export const DisplayControlIndicator = styled.button`
   font-family: "Monocraft", Courier, monospace;
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  font-size: ${getFontSize("sm")};
   padding: ${px(1)} ${px(3)};
   color: ${({ theme }) => theme.colors.primary.white};
   background: transparent;

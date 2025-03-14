@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { px } from "../../../../utils/themeUtils";
+import { getFontSize, px } from "../../../../utils/themeUtils";
 
 export const Chars = styled.span`
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  font-size: ${getFontSize("xs")};
   opacity: 0.7;
 `;
 
@@ -15,6 +15,7 @@ const buttonBaseStyles = css`
   color: ${({ theme }) => theme.colors.text.default};
   outline: none;
   font-family: "Monocraft";
+  font-size: ${getFontSize("sm")};
 `;
 
 export const KeypadButtonContainer = styled.button<{ $isControl?: boolean }>`

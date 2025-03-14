@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import Monocraft from "./assets/fonts/monocraft/Monocraft.otf";
+import { getFontSize } from "./utils/themeUtils";
 
 export default createGlobalStyle`
   @font-face {
@@ -13,7 +14,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: "Monocraft", system-ui, sans-serif;
-    font-size: ${({ theme }) => theme.typography.fontSize.base};
+    font-size: ${getFontSize("base")};
     line-height: ${({ theme }) => theme.lineHeights.base};
     font-weight: ${({ theme }) => theme.fontWeights.base};
     color: ${({ theme }) => theme.colors.text.default};
